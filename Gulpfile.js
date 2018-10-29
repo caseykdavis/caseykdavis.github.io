@@ -13,7 +13,10 @@ var gulp = require( 'gulp' ),
 	imagemin = require( 'gulp-imagemin' ),
 	cache = require( 'gulp-cache' ),
 	del = require( 'del' ),
-	runSequence = require( 'run-sequence' );
+	runSequence = require( 'run-sequence' ),
+	ghPages = require( 'gulp-gh-pages' );
+
+
 // reload = browserSync.reload;
 
 // Basic Gulp task syntax
@@ -178,6 +181,13 @@ gulp.task( 'build', function ( callback ) {
 		callback
 	)
 } )
+
+gulp.task( 'deploy', function () {
+	return gulp.src(
+			'./dist/**/*'
+		)
+		.pipe( ghPages() )
+} );
 
 // ###############################################
 // dist build tasks
