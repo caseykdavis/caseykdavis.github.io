@@ -27,10 +27,10 @@ gulp.task( 'hello', function () {
 // ###############################################
 // var listing of files for dist build
 var filesToDist = [
-  './src/assets/*.html',
+  './src/*.html',
   './src/assets/styles/**/*.*',
   './src/assets/img/**/*.*',
-  './src/assets/js//**/*.js'
+  './src/assets/js/**/*.js'
 ];
 // ###############################################
 
@@ -158,7 +158,7 @@ gulp.task( 'watch', [ 'browserSync', 'sass' ], function () {
 	gulp.watch( './src/assets/styles/sass/**/*.scss', [ 'sass' ] );
 	// Reloads the browser whenever HTML or JS files change
 	gulp.watch( './src/*.html', browserSync.reload );
-	gulp.watch( './src//js/**/*.js', browserSync.reload );
+	gulp.watch( './src/assets/js/**/*.js', browserSync.reload );
 } );
 
 // Build Sequences
