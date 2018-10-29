@@ -1,0 +1,7 @@
+$ git status
+[...]
+# Untracked files:
+[...]
+node_modules/
+package-lock.json
+.editorconfig
