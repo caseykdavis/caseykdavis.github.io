@@ -1,2 +1,12 @@
-@import "normalize.scss";
-@import "boilerplate.scss";
+// Vendor Styles
+@import "vendor/normalize.scss"; // Abstracts
+@import "abstracts/sandbox.scss";
+@import "abstracts/utilities.scss"; // Base Styles
+@import "base/vars.scss";
+@import "base/base.scss";
+@import "base/typography.scss"; // Layout styles
+@import "layout/header.scss";
+@import "layout/nav.scss";
+@import "layout/footer.scss"; // Component styles
+@import "components/buttons.scss"; // Page Specific Styles
+@import "pages/home.scss";
