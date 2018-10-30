@@ -14,8 +14,8 @@ var gulp = require( 'gulp' ),
 	cache = require( 'gulp-cache' ),
 	del = require( 'del' ),
 	runSequence = require( 'run-sequence' ),
+	netlify = require( 'gulp-netlify' ),
 	ghPages = require( 'gulp-gh-pages' );
-
 
 // reload = browserSync.reload;
 
@@ -183,11 +183,13 @@ gulp.task( 'build', function ( callback ) {
 } )
 
 gulp.task( 'deploy', function () {
-	return gulp.src(
-			'./dist/**/*'
-		)
-		.pipe( ghPages() )
-} );
+	gulp.src( './dist/**/*' )
+	gulp.src('./public/**/*')
+    .pipe(netlify({
+      site_id: 6a2a4932-d4aa-450e-93b6-5cf65c66c28c,
+      access_token: b259b10c915e5ae11b19ba7c49a5ef7e79fe6e0c0e41144963a0e52d95754a2c
+    }))
+} )
 
 // ###############################################
 // dist build tasks

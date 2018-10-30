@@ -28,5 +28,7 @@
   },
   "author": "Casey K. Davis",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "gulp-netlify": "^1.1.0"
+  }
 }
