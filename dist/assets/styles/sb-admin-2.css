@@ -23,7 +23,7 @@ body {
         position: inherit;
         margin: 0 0 0 250px;
         padding: 0 30px;
-      /*  border-left: 1px solid #e7e7e7;*/
+        /*  border-left: 1px solid #e7e7e7;*/
     }
 }
 
@@ -116,7 +116,7 @@ body {
 
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
-    border-bottom: 0!important;
+    border-bottom: 0 !important;
 }
 
 .sidebar .nav-second-level li a {
@@ -253,7 +253,7 @@ table.dataTable thead .sorting:after {
     content: "\f0dc";
     float: right;
     font-family: fontawesome;
-    color: rgba(50,50,50,.5);
+    color: rgba(50, 50, 50, .5);
 }
 
 .btn-circle {
@@ -288,7 +288,7 @@ table.dataTable thead .sorting:after {
     padding-top: 10px;
     padding-bottom: 10px;
     border: 1px solid #ddd;
-    background-color: #eee!important;
+    background-color: #eee !important;
 }
 
 .show-grid {
