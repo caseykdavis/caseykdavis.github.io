@@ -1,0 +1,55 @@
+<script>
+$.getScript('https://code.highcharts.com/highcharts-3d.js',function(){
+ $.getScript('/WebsiteData/JS/dayHourMonthYear.js',function(){
+  $.getScript('/WebsiteData/JS/highchartsTheme.js',function(){
+  });
+});
+ });
+</script>
+
+<h2 style="color:green" class="text-center"> Monthly, Daily, Hourly Analysis</h2>
+<div>
+  <h4 class="text-center" style="color:green" >Select Year  <input id="year2015" class="myYear" type="radio" name="year" value="2015" checked> 2015
+    <input id="year2014" type="radio" name="year" class="myYear" value="2014"> 2014<br><br>
+    </h4>
+<!--<div class ="col-md-6" id="monthWiseUserType" ></div>
+<div  class ="col-md-6"id="dayWiseUserType" ></div>
+<div class ="col-md-6" id="weekWiseUserType" style="padding-top: 20px"></div>
+<div class ="col-md-6" id="hourWiseUserType" style="padding-top: 20px"></div>-->
+
+
+
+
+
+<ul id="tabs" class="nav nav-tabs">
+  <li id="monthWiseUserType-tab" onclick="loadMonthly()">
+    <a href="#trips-monthWiseUserType"><h4>Monthly</h4></a>
+  </li>
+  <li  id="dayWiseUserType-tab" onclick="loadDaily()" >
+    <a href="#trips-dayWiseUserType"><h4>Daily</h4></a>
+  </li>
+    <li  id="weekWiseUserType-tab" onclick="loadWeekly()" >
+    <a href="#trips-weekWiseUserType"><h4>Weekly</h4></a>
+  </li>
+  <li  id="hourWiseUserType-tab" onclick="loadHourly()" >
+    <a href="#trips-hourWiseUserType"><h4>Hourly</h4></a>
+  </li>
+</ul>
+
+<div class=" col-md-12 col-sm-12 col-lg-12 outerBox " style="min-height:450px">
+    <div  class=" col-md-12 col-sm-12 col-lg-12 innerBox" id="trips-dayWiseUserType" >
+      <div id="dayWiseUserType"></div>
+  </div>
+  <div  class="col-md-12 col-sm-12 col-lg-12 innerBox" id="trips-weekWiseUserType" >
+        <div id="weekWiseUserType"></div>
+  </div>
+  <div  class=" col-md-12 col-sm-12 col-lg-12 innerBox " id="trips-hourWiseUserType" >
+      <div id="hourWiseUserType"></div>
+  </div>
+    
+    <div  class=" col-md-12 col-sm-12 col-lg-12 innerBox" id="trips-monthWiseUserType" >
+      <div id="monthWiseUserType"></div>
+  </div>
+</div>
+
+

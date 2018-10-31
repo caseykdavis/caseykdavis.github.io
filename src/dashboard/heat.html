@@ -1,0 +1,43 @@
+        <span>
+            <label>City: </label>
+            <select id="city">
+                <option selected=true value="san jose">San Jose</option>
+                <option value="palo alto">Palo Alto</option>
+                <option value="mountain view">Mountain View</option>
+                <option value="redwood city">Redwood City</option>
+                <option value="san francisco">San Francisco</option>
+            </select>
+        </span>
+        <span>
+            <label>User Type: </label>
+            <select id="userType">
+                <option selected=true value="all">All</option>
+                <option value="subscriber">Subscriber</option>
+                <option value="customer">Customer</option>
+            </select>
+        </span>
+        <span>
+            <label>Days: </label>
+            <select id="day">
+                <option selected=true value="all">All days</option>
+                <option value="sunday">Sunday</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+            </select>
+        </span>
+        <div id="container"></div>
+   <script>
+       
+        $.getScript('/heatmap/heatmap.css'); 
+           
+        $.getScript('http://code.highcharts.com/modules/heatmap.js',function(){       
+                $.getScript('/heatmap/heatmap.js');
+            });
+   </script>
+    
+
+

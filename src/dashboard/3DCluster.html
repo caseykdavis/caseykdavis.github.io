@@ -1,0 +1,22 @@
+ 
+        <span>
+            <label>City: </label>
+            <select id="city">
+                <option>San Jose</option>
+                <option>Palo Alto</option>
+                <option>Mountain View</option>
+                <option>Redwood City</option>
+                <option>San Francisco</option>
+        </select>
+        </span>
+
+<div id="container"></div>
+<script> 
+  $.getScript('https://code.highcharts.com/highcharts-3d.js',function(){
+  	console.log("loaded  highcharts 3D !");
+  	 // 3D cluster is dependent on the Highcharts so making nested call to first load 3dHightchat lib then the actual script 
+  	 $.getScript('/WebsiteData/JS/3DCluster.js',function(){
+  	console.log("loaded  3DCluster script !");
+       });
+  });
+</script>

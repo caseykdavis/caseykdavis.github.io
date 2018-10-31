@@ -1,0 +1,60 @@
+
+
+<script>
+
+ $.getScript('/WebsiteData/JS/userDocksStationsTrips.js',function(){
+
+  $.getScript('/WebsiteData/JS/highchartsTheme.js',function(){
+  });
+});
+
+</script>
+<h2 class="text-center"  style="color:green">User type, Trips, Docks, Stations Analysis</h2>
+<div>
+  <h4 class="text-center" style="color:green">Select Year  <input id="year2015" class="myYear" type="radio" name="year" value="2015" checked> 2015
+    <input id="year2014" type="radio" name="year" class="myYear" value="2014"> 2014<br><br> <h4>
+<!--<div class ="col-md-6" id="userTypeWiseTrips"  ></div>
+<div class ="col-md-6" id="cityWiseTrips"  ></div>
+<div class ="col-md-6" id="cityWiseDocksData" style="padding-top: 20px" ></div>
+<div class ="col-md-6" id="cityWiseStationsData" style="padding-top: 20px"></div>-->
+</div>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li id="userTypeWiseTrips-tab" class="active" onclick="userType()">
+    <a href="#trips-userTypeWiseTrips" data-toggle="tab"><h4>User Type</h4></a>
+  </li>
+  <li  id="cityWiseTrips-tab" onclick="Trips()">
+    <a href="#trips-cityWiseTrips" data-toggle="tab"><h4>Trips</h4></a>
+  </li>
+  <li  id="cityWiseDocksData-tab" onclick="Docs()" >
+    <a href="#trips-cityWiseDocksData"  data-toggle="tab"><h4>Docks</h4></a>
+  </li>
+  <li  id="cityWiseStationsData-tab" onclick="Station()" >
+    <a href="#trips-cityWiseStationsData"  data-toggle="tab"><h4>Stations</h4></a>
+  </li>
+</ul>
+
+<div class="outerBox col-md-12 col-lg-12 col-sm-12" style="min-height:450px">
+  <div  class="innerBox col-md-12 col-lg-12 col-sm-12" id="trips-userTypeWiseTrips" >
+   <div class="col-md-12 col-lg-12 col-sm-12">
+    <div  class="col-md-12 col-lg-12 col-sm-12" id="userTypeWiseTrips" style=""></div>
+  </div>
+</div>
+<div  class="innerBox col-md-12 col-lg-12 col-sm-12" id="trips-cityWiseTrips" >
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <div  class="col-md-12 col-lg-12 col-sm-12" id="cityWiseTrips" style=""></div>
+  </div>
+</div>
+<div  class="innerBox col-md-12 col-lg-12 col-sm-12" id="trips-cityWiseDocksData" >
+ <div class="col-md-12 col-lg-12 col-sm-12">
+  <div class="col-md-12 col-lg-12 col-sm-12" id="cityWiseDocksData" style=""></div>
+</div>
+</div>
+<div  class="innerBox col-md-12 col-lg-12 col-sm-12" id="trips-cityWiseStationsData" >
+ <div class="col-md-12 col-lg-12 col-sm-12">
+  <div id="cityWiseStationsData" class="col-md-12 col-lg-12 col-sm-12" style=""></div>
+</div>
+</div>
+</div>
+

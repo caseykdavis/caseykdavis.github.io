@@ -1,0 +1,23 @@
+
+<script>
+	$.getScript('/WebsiteData/JS/startingEndingTrips.js',function(){
+		$.getScript('/WebsiteData/JS/highchartsTheme.js',function(){
+		});
+	});
+	</script>
+
+	<h2 style="color:green" class="text-center">Starting and Ending trips Analysis</h2>
+	<div>
+		<h4 class="text-center" style="color:green" >Select Year  <input id="year2015" class="myYear" type="radio" name="year" value="2015" checked> 2015
+			<input id="year2014" type="radio" name="year" class="myYear" value="2014"> 2014<br><br>
+			<input class="center city"type="radio" name="mychart1"  id= "sanfrancisco" value="San Francisco"  checked> San Francisco
+			<input class="center city"type="radio" name="mychart1"  id= "sanjose" value="San Jose"  > San Jose
+			<input class="center city"type="radio" name="mychart1"  id= "paloalto" value="Palo Alto" > Palo Alto
+			<input class="center city"type="radio" name="mychart1"  id= "redwoodcity" value="Redwood City"  > Redwood City
+			<input class="center city"type="radio" name="mychart1"  id= "mountainview" value="Mountain View"  > Mountain View<br><br>
+			Sort By - <input id="ending" type="radio" name="sort" class="mytripssort" value="ending_trips"> Ending Trips
+			<input id="starting" class="mytripssort" type="radio" name="sort" value="starting_trips" checked> Starting Trips
+		</h4>
+	</div>
+	<div id="startEndStation" class ="col-md-12" style="min-width: 610px; min-height: 1000px; margin: 0 auto;padding: 20px"></div>
+

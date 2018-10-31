@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bike Share</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/WebsiteData/CSS/allCss.css">
+    <link rel="stylesheet" href="/WebsiteData/CSS/allCss2.css">
+</head>
+
+<body>
+    <div id="wrapper" class="myTheme">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><b>Bay Area Bike Share Analysis</b></a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right"> 
+                <!-- /.dropdown -->
+               <i class="fa fa-folder-open fa-3x" aria-hidden="true" style="margin-top:5px" onclick="showsnap()"> </i>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse myTheme" style="font-size: 17px;" >
+                    <ul class="nav" id="side-menu" >
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                      <!--   <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li> -->
+                           <li>
+                            <a href="/VirtualRealData/virtualRealData.html" target="_blank">
+ Virtual Real Time</a>
+                        </li>
+                        <li>
+                            <a href="#"> Charts<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level" >
+                                <li id="chord" >
+                                    <a href="#">Chord</a>
+                                </li>
+                                <li id="heat">
+                                    <a href="#">Heat Map</a>
+                                </li>
+                              
+                                <li id="3DCluster">
+                                    <a href="#">3D Cluster </a>
+                                </li>
+                               
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Real Time Analysis <span class="caret" style="border-width:6px;"></span></a>
+                                  <ul class="dropdown-menu" style="margin-left: 50px">
+                                     <li id="realTimeMap">
+                                        <a href="#"  style="color: #337ab7; text-decoration: none;"> Map</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li id="realTimeAnalysis">
+                                        <a href="#"  style="color: #337ab7; text-decoration: none;"> <i class="fa fa-bar-chart" aria-hidden="true"></i> Charts</a>
+                                    </li>                    
+                                </ul>
+                            </li>
+                                <li id="startingEndingTrips1">
+                                    <a href="#">Starting and Ending Trips </a>
+                                </li>
+                                <li id="monthlyDailyHourly1">
+                                    <a href="#">Monthly, Daily and Hourly </a>
+                                </li>
+                                <li id="tripsStationsRevenue1">
+                                    <a href="#">  Trips, Stations and Revenue </a>
+                                </li>
+                                <li id="topFiveAnalysis1">
+                                    <a href="#">Top Five Analysis</a>
+                                </li>
+                                <li id="userDocksStationsTrips1">
+                                    <a href="#">  User, Docks, Stations, Trips </a>
+                                </li>
+                                <li id="bikeAnalysis">
+                                    <a href="#">Bike Trip Analysis</a>
+                                </li>
+                                
+                                 <li id="weather">
+                                    <a href="#">Weather Map</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                       
+                       
+                       
+                       
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper" class="myTheme">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">My Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /. first row ends -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-signal fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                <div id="stationNameRealTimeAvailableBikes"></div>
+                                    <div id="stationNameRealTimeAvailableBikesCount" class="huge"></div>
+                                    
+                                    <div>Available Bikes</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <div class="pull-right" id="refreshValues1"><i class="fa fa fa-refresh 2x"></i></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- first square completed -->
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                       <div id="stationNameRealTimeAvailableDocks"></div>
+                                    <div id="stationNameRealTimeAvailableDocksCount" class="huge"></div>
+                                    <div>Available Docks</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <div class="pull-right" id="refreshValues2"><i class="fa fa fa-refresh 2x"></i></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-map-marker fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id="stationNameRealTimeTotalDocks"></div>
+                                    <div id="stationNameRealTimeTotalDocksCount" class="huge"></div>
+                                    <div>Total Docks</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <div class="pull-right" id="refreshValues2"><i class="fa fa fa-refresh 2x"></i></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-bar-chart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                        <div id="stationNameRealTimeDemandName"></div>
+                                    <div id="stationNameRealTimeDemand" class="huge"></div>
+                                    <div>Demand Prediction</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <div class="pull-right" id="refreshValues2"><i class="fa fa fa-refresh 2x"></i></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /. second row ends  -->
+            <div class="row">
+                <!-- displaying page column -->
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i><label id="chartTitle"></label>
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" class="col-lg-8 col-md-8 col-sm-8">
+                            <!--<div id="morris-area-chart"></div> -->
+                            <div id="x1" class="col-lg-12 col-md-12 col-sm-12"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+                <!-- /.col-lg-8 -->
+                <!--displaying column option -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                       
+                        </div>
+                        <!-- /.panel-body -->
+<div class="panel-body" style="border-style: groove">                            
+                            
+<div class="container">
+  <br>
+  <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel1" data-slide-to="1"></li>
+      <li data-target="#myCarousel1" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+                
+        <div>
+                                          <center> Most Popular Hours-2014 </center>
+                                           <table> 
+                                               <col width="60%" >
+                                               <col width="40%">
+                                               <tr>
+                                                <th> Hours</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>8:00 AM - 9:00 AM  </td>
+                                                <td> </td>
+                                                <td>  33433</td>
+                                               </tr>
+                                              <tr>
+                                               <td>5:00 PM - 6:00 PM  </td>
+                                               <td> </td>
+                                                <td>33112</td>
+                                               </tr>
+                                                <tr>
+                                               <td>9:00 AM - 10:00 AM	  </td>
+                                                <td> </td>
+                                                <td>25517</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>4:00 PM - 5:00 PM </td>
+                                                <td> </td>
+                                                <td>24195</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>6:00 PM - 7:00 PM</td>
+                                                <td> </td>
+                                                <td>23816</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div>      
+      </div>
+
+      <div class="item">
+        
+        <div >
+                                            <div>
+                                        <center>   Most Popular Days-2014 </center>
+                                           <table> 
+                                               <col width="50%" >
+                                               <col width="50%">
+                                               <tr>
+                                                <th> Day</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>Thursday </td>
+                                                <td> </td>
+                                                <td>  50277</td>
+                                               </tr>
+                                              <tr>
+                                               <td>Tuesday </td>
+                                               <td> </td>
+                                                <td>50132</td>
+                                               </tr>
+                                                <tr>
+                                               <td> Wednesday 	  </td>
+                                                <td> </td>
+                                                <td>49312</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>Monday </td>
+                                                <td> </td>
+                                                <td>46889</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>Friday</td>
+                                                <td> </td>
+                                                <td>46292</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div>                         
+                                        </div>
+      </div>
+    
+      <div class="item">
+        
+          <div>
+                                    <center>       Most Popular Months-2014 </center>
+                                           <table> 
+                                               <col width="50%" >
+                                               <col width="50%">
+                                               <tr>
+                                                <th> Month</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>August  </td>
+                                                <td> </td>
+                                                <td>  29769</td>
+                                               </tr>
+                                              <tr>
+                                               <td>July  </td>
+                                               <td> </td>
+                                                <td>27756</td>
+                                               </tr>
+                                                <tr>
+                                               <td>June	  </td>
+                                                <td> </td>
+                                                <td>26496</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>October </td>
+                                                <td> </td>
+                                                <td>26152</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>May</td>
+                                                <td> </td>
+                                                <td>25134 </td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div> 
+      </div>
+
+      
+  
+    </div>
+
+    <!-- Left and right controls -->
+  <!--  <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a> -->
+  </div>
+</div>
+
+
+<div class="container">
+  <br>
+  <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel2" data-slide-to="1"></li>
+      <li data-target="#myCarousel2" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+                
+        <div>
+                                  <center>         Most Popular Hours-2015 </center>
+                                           <table> 
+                                               <col width="60%" >
+                                               <col width="40%">
+                                               <tr>
+                                                <th> Hours</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>8:00 AM - 9:00 AM  </td>
+                                                <td> </td>
+                                                <td>  46064</td>
+                                               </tr>
+                                              <tr>
+                                               <td>5:00 PM - 6:00 PM  </td>
+                                               <td> </td>
+                                                <td>41397</td>
+                                               </tr>
+                                                <tr>
+                                               <td>9:00 AM - 10:00 AM	  </td>
+                                                <td> </td>
+                                                <td>31871</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>4:00 PM - 5:00 PM </td>
+                                                <td> </td>
+                                                <td>28631</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>6:00 PM - 7:00 PM</td>
+                                                <td> </td>
+                                                <td>27734</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div>      
+      </div>
+
+      <div class="item">
+        
+        <div >
+                                            <div>
+                                  <center>         Most Popular Days-2015 </center>
+                                           <table> 
+                                               <col width="50%" >
+                                               <col width="50%">
+                                               <tr>
+                                                <th> Day</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>Tuesday  </td>
+                                                <td> </td>
+                                                <td>  60517</td>
+                                               </tr>
+                                              <tr>
+                                               <td>Wednesday  </td>
+                                               <td> </td>
+                                                <td>59414</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Monday	  </td>
+                                                <td> </td>
+                                                <td>57820</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>Thursday </td>
+                                                <td> </td>
+                                                <td>57324</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>Friday</td>
+                                                <td> </td>
+                                                <td>52616</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div>                         
+                                        </div>
+      </div>
+    
+      <div class="item">
+        
+          <div>
+              <center>    Most Popular Months-2015  </center>
+                                           <table > 
+                                               <col width="50%" >
+                                               <col width="50%">
+                                               <tr>
+                                                   
+                                                <th > Month</th>
+                                               <th></th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>October  </td>
+                                                <td></td>
+                                                <td>  62180</td>
+                                               </tr>
+                                              <tr>
+                                               <td>July  </td>
+                                               <td></td>
+                                                <td>58090</td>
+                                               </tr>
+                                                <tr>
+                                               <td>March	  </td>
+                                                <td></td>
+                                                <td>57632</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>August </td>
+                                                <td></td>
+                                                <td>57516</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>June</td>
+                                                <td></td>
+                                                <td>57366</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div> 
+      </div>
+
+      
+  
+    </div>
+
+    <!-- Left and right controls -->
+   <!-- <a class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel2" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a> -->
+  </div>
+</div>
+
+
+<div class="container">
+  <br>
+  <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel3" data-slide-to="1"></li>
+      <li data-target="#myCarousel3" data-slide-to="2"></li>
+       
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+                
+        <div>
+                                        <center>   Most Popular Starting Stations-2014 </center>
+                                           <table> 
+                                                <col width="85%" >
+                                               <col width="15%">
+                                               <tr>
+                                                <th> Station Name</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>San Francisco Townsend 4th  </td>
+                                                <td> </td>
+                                                <td>  22788</td>
+                                               </tr>
+                                              <tr>
+                                               <td>Harry Bridges Ferry Bld </td>
+                                               <td> </td>
+                                                <td>15679</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Embarcadero at Sansome  </td>
+                                                <td> </td>
+                                                <td>13555</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>Market at Sansome  </td>
+                                                <td> </td>
+                                                <td>12741</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>San Francisco 330 Townsend</td>
+                                                <td> </td>
+                                                <td>11984</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div>      
+      </div>
+
+      <div class="item">
+        
+        <div >
+                                            <div>
+                              <center>             Most Popular Destinations of year  2014  </center>
+                                           <table> 
+                                               <col width="90%" >
+                                               <col width="10%">
+                                               <tr>
+                                                <th> Station Name</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>San Francisco Townsend at 4th</td>
+                                                <td> </td>
+                                                <td>  28361</td>
+                                               </tr>
+                                              <tr>
+                                               <td>Embarcadero at Sansome  </td>
+                                               <td> </td>
+                                                <td>15731</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Harry Bridges Plaza Ferry Bld </td>
+                                                <td> </td>
+                                                <td>15383</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>Market at Sansome </td>
+                                                <td> </td>
+                                                <td>14116</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>2nd at Townsend</td>
+                                                <td> </td>
+                                                <td>13066</td>
+                                               </tr>
+                                               
+                                           </table> 
+                                        </div>                         
+                                        </div>
+      </div>
+
+        
+        <div class="item">
+        
+          <div>
+                                       <center>    Most Popular Destinations of year 2015 </center>
+                                           <table> 
+                                               <col width="90%" >
+                                               <col width="10%">
+                                               <tr>
+                                                <th> Station Name</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>San Francisco Townsend at 4th  </td>
+                                                <td> </td>
+                                                <td>  34806</td>
+                                               </tr>
+                                              <tr>
+                                               <td>San Francisco 330 Townsend  </td>
+                                               <td> </td>
+                                                <td>22523</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Harry Bridges Plaza Ferry Building </td>
+                                                <td> </td>
+                                                <td>17810</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>2nd at Townsend </td>
+                                                <td> </td>
+                                                <td>15463</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>Townsend at 7th</td>
+                                                <td> </td>
+                                                <td>15422</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div> 
+      </div>
+        
+  
+    </div>
+
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    
+    <div class="container">
+  <br>
+  <div id="myCarousel4" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel4" data-slide-to="1"></li>
+      <li data-target="#myCarousel4" data-slide-to="2"></li>
+      
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      
+    
+      <div class="item active">
+        
+          <div>
+                                      <center>     Most Popular Starting Stations of year 2015 </center>
+                                           <table> 
+                                               <col width="90%" >
+                                               <col width="10%">
+                                               <tr>
+                                                <th> Station Name</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>San Francisco (Townsend at 4th)  </td>
+                                                <td> </td>
+                                                <td>  26304</td>
+                                               </tr>
+                                              <tr>
+                                               <td>San Francisco (330 Townsend)  </td>
+                                               <td> </td>
+                                                <td>21758</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Harry Bridges(Ferry Building)  </td>
+                                                <td> </td>
+                                                <td>17255</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>Temporary Transbay(Howard)  </td>
+                                                <td> </td>
+                                                <td>14436</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>Embarcadero at Sansome</td>
+                                                <td> </td>
+                                                <td>14158</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div> 
+      </div>
+
+      <div class="item">
+        
+          <div>
+                                       <center>    Most Popular Destinations of year 2015 </center>
+                                           <table> 
+                                               <col width="90%" >
+                                               <col width="10%">
+                                               <tr>
+                                                <th> Station Name</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>San Francisco Townsend at 4th  </td>
+                                                <td> </td>
+                                                <td>  34806</td>
+                                               </tr>
+                                              <tr>
+                                               <td>San Francisco 330 Townsend  </td>
+                                               <td> </td>
+                                                <td>22523</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Harry Bridges Plaza Ferry Building </td>
+                                                <td> </td>
+                                                <td>17810</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>2nd at Townsend </td>
+                                                <td> </td>
+                                                <td>15463</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>Townsend at 7th</td>
+                                                <td> </td>
+                                                <td>15422</td>
+                                               </tr>
+                                               
+                                           </table>
+                                        </div> 
+      </div>
+  
+        
+              <div class="item">
+        
+        <div >
+                                            <div>
+                              <center>             Most Popular Destinations of year  2014  </center>
+                                           <table> 
+                                               <col width="90%" >
+                                               <col width="10%">
+                                               <tr>
+                                                <th> Station Name</th>
+                                                   <th> </th>
+                                                <th> Rides</th>
+                                               </tr>
+                                               <tr>
+                                               <td>San Francisco Townsend at 4th</td>
+                                                <td> </td>
+                                                <td>  28361</td>
+                                               </tr>
+                                              <tr>
+                                               <td>Embarcadero at Sansome  </td>
+                                               <td> </td>
+                                                <td>15731</td>
+                                               </tr>
+                                                <tr>
+                                               <td>Harry Bridges Plaza Ferry Bld </td>
+                                                <td> </td>
+                                                <td>15383</td>
+                                               </tr>
+                                                <tr>
+                                                    
+                                               <td>Market at Sansome </td>
+                                                <td> </td>
+                                                <td>14116</td>
+                                               </tr>
+                                               
+                                                <tr>
+                                               <td>2nd at Townsend</td>
+                                                <td> </td>
+                                                <td>13066</td>
+                                               </tr>
+                                               
+                                           </table> 
+                                        </div>                         
+                                        </div>
+      </div>
+        
+        
+    </div>
+
+  </div>
+</div>
+    
+</div>
+                   
+                    
+                    </div>
+                    <!-- /.panel -->
+                    <!-- /.panel-footer -->
+                </div>
+                <!-- /.panel .chat-panel -->
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>
+    <!-- Menu option snap shot -->
+    <div id="myPopUp" class="hidePopUp"> 
+        <div class="row">
+         <div class="col-sm-11 col-md-11 col-lg-11"></div>
+             <div class="col-sm-1 col-md-1 col-lg-1">
+            <i  id="popUpClose" class="fa fa-times fa-5x"  style="color:white"aria-hidden="true" onclick="closePopUp()"></i>
+            </div>
+        </div>
+         <!-- cross icon -->
+              <!--row 1 started -->
+        		<div class="row">
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<div class="grid mask select-project">
+						<figure > <img class="img-responsive" alt="click to see more" src="/WebsiteData/Media/Images/Graphs.png" onclick="loadStartingEndingTrips1()"> 
+							<!-- image responsive to make it small as per the col requirement  -->
+							<figcaption> "Starting - Ending Trips"  <a data-toggle="modal" href=""  class="btn btn-primary btn-small">click
+									here
+								</a> </figcaption>
+						</figure>
+					</div>
+					<!-- grid mask finished -->
+				</div>
+				<!-- first item  finished -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- second item started  -->
+					<div class="grid mask select-project" onclick="loadHeatfromPopUp()">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/HeatGraph.png">loadHeat()
+							<figcaption class="figcaption"> "Heat Map "
+								<button class="btn btn-primary btn-small" >See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+				<!-- md-3 closed -->
+				<!--second item finished  -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- third  item started  -->
+					<div class="grid mask select-project">
+						<figure> <img class="img-responsive " src="/WebsiteData/Media/Images/clusterMap.png" onclick="loadBikeAnalysis1()">
+							<figcaption class="figcaption"> "Bike Trip Analysis"
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+				<!-- md-3 closed -->
+                  <div class="col-md-3 col-lg-3 col-sm-3">
+					<div class="grid mask select-project">
+                        <figure id="myProject7"> <img class="img-responsive" alt="click to see more" src="/WebsiteData/Media/Images/waether.png" onclick="loadWeather1()">  
+							<!-- image responsive to make it small as per the col requirement  -->
+							<figcaption> "Weather Analysis"<button class="btn btn-primary btn-small" >click
+									here
+								 </figcaption>
+						</figure>
+					</div>
+					<!-- grid mask finished -->
+                    </div>
+			</div>
+               <!-- row 1  completed -->
+               <br>
+			   <div class="row">
+				<!--Second row  started-->
+				<div class="col-md-3 col-lg-3 col-sm-3 ">
+					<!-- first item started  -->
+					<div class="grid mask select-project">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/realtimemap.png" onclick="loadRealTimeMap1()">
+							<figcaption class="figcaption"> "Real Time Map"
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+				<!-- row2 item 1 closed -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- second  item started  -->
+					<div class="grid mask select-project" onclick="loadChord123()">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/Cords.PNG">
+							<figcaption class="figcaption"> "Chord Diagram "
+								<button class="btn btn-primary btn-small" >See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+				<!-- row 2 item 2 closed -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- second  item started  -->
+					<div class="grid mask select-project" onclick="load3DCluster1()">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/scatterGraph.PNG">
+							<figcaption class="figcaption"> "3d Scatter Plot "
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+				<!--  row 2 item 3 closed -->
+                <div class="col-md-3 col-lg-3 col-sm-3">
+					<div class="grid mask select-project">
+                        <a href="/VirtualRealData/virtualRealData.html"> 
+                        <figure id="myProject7"> <img class="img-responsive" alt="click to see more" src="/WebsiteData/Media/Images/virtual.png">  
+							<!-- image responsive to make it small as per the col requirement  -->
+							<figcaption> "Virtual Real Data" <button class="btn btn-primary btn-small" >click
+									here
+								 </figcaption>
+						</figure>
+                        </a>
+					</div>
+					<!-- grid mask finished -->
+				 </div>
+                   <!-- row 2 item 4 closed --> 
+                   
+			</div>
+                <br>
+               <!-- row 2 completed -->
+                    
+                <!-- row three started --> 
+               <div class="row">
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- second item started  -->
+					<div class="grid mask select-project">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/hourlyMonthlyYearly.png" onclick="loadMonthlyDailyHourly1()">
+							<figcaption class="figcaption"> "Monthly/Hourly/Daily Analysis"
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+				<!-- row 3 item 1 closed -->
+				<!--second item finished  -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- third  item started  -->
+					<div class="grid mask select-project">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/RealTimeGraphs1.png" onclick="loadRealTimeAnalysis1()">
+							<figcaption class="figcaption"> "Real Time Charts"
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+                <!-- -->
+				<!-- row 3 3rd item  closed -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<div class="grid mask select-project">
+                        <figure id="myProject7"> <img class="img-responsive" alt="click to see more" src="/WebsiteData/Media/Images/TripAnalysisYear.png" onclick="loadTripsStationsRevenue1()">  
+							<!-- image responsive to make it small as per the col requirement  -->
+							<figcaption> "Trips Station Analysis Revenue"<button class="btn btn-primary btn-small" >click
+									here
+								 </figcaption>
+						</figure>
+					</div>
+					<!-- grid mask finished -->
+				</div>
+                    <!-- row 3 item 3 closed -->
+                <div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- second item started  -->
+					<div class="grid mask select-project">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/MostPopolar.PNG" onclick="loadTopFiveAnalysis1()">
+							<figcaption class="figcaption"> "Top 5  Analysis"
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+                    <!-- row 3 item 4 closed -->
+                   </div>
+                   <br>
+               <!-- row 3 completed -->
+               <!-- row 4 started --> 
+				<!--second item finished  -->
+				<div class="col-md-3 col-lg-3 col-sm-3">
+					<!-- third  item started  -->
+					<div class="grid mask select-project">
+						<figure> <img class="img-responsive" src="/WebsiteData/Media/Images/userTripDocStation.png" onclick="loadUserDocksStationsTrips1()">
+							<figcaption class="figcaption"> "User Dock Type Analysis "
+								<button class="btn btn-primary btn-small">See More</button>
+							</figcaption>
+						</figure>
+					</div>
+					<!-- grid mask closed  -->
+				</div>
+                <!-- -->
+				<!-- md-3 closed -->
+			</div>
+        <!--row 4 completed -->
+                     <!-- -- > 
+
+    
+    </div>
+    <!-- menu option completed -->
+        <!-- /.row -->
+    <!-- /#page-wrapper -->
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../JS/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/WebsiteData/JS/ShareData.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="/WebsiteData/JS/highchartsTheme.js"></script>
+    <script type="text/javascript" src="../JS/realtimeSetValues.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <meta content="authenticity_token" name="csrf-param" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
+    
+    
+    <script>
+        $('#x1').load('/WebsiteData/HTML/Templates/bikeTrip.html'); // initial page
+        $('#chord').on('click',loadChord);
+        $('#heat').on('click',loadHeat);
+        $('#3DCluster').on('click',load3DCluster);
+        $('#realTimeMap').on('click',loadRealTimeMap);
+        $('#realTimeAnalysis').on('click',loadRealTimeAnalysis);
+        $('#bikeAnalysis').on('click',loadBikeAnalysis);
+        $('#startingEndingTrips1').on('click',loadStartingEndingTrips);
+        $('#tripsStationsRevenue1').on('click',loadTripsStationsRevenue);
+        $('#monthlyDailyHourly1').on('click',loadMonthlyDailyHourly);
+        $('#topFiveAnalysis1').on('click',loadTopFiveAnalysis);
+        $('#userDocksStationsTrips1').on('click',loadUserDocksStationsTrips);
+        $('#weather').on('click',loadWeather);
+        ////////-----------------------------routing functions------------------------////////
+        function loadBikeAnalysis(){
+           $('#x1').empty();
+           $('#x1').load('/WebsiteData/HTML/Templates/bikeTrip.html'); 
+       }
+
+
+       function loadChord(evt){
+            // function(){}  // to remove all the on event.
+            $('#x1').empty();
+            $('#x1').load('/WebsiteData/HTML/Templates/chord.html');
+            $("#chartTitle").html('<h6> Chord Diagram</h6>') ; 
+        }
+        
+        function loadHeat(evt){
+            // function(){}  // to remove all the on event.
+            $('#x1').empty();
+            $('#x1').load('/WebsiteData/HTML/Templates/heat.html'); 
+                $("#chartTitle").html('<h6> HeatMap</h6>') ;  
+        }
+        //3DCluster
+
+        function load3DCluster(evt){
+         $('#x1').empty();
+         $('#x1').load('/WebsiteData/HTML/Templates/3DCluster.html',function(){
+            console.log("loaded 3d cluster template !");
+        });  
+             $("#chartTitle").html('<h6> 3D Cluster</h6>') ; 
+     }
+
+
+     function loadRealTimeMap(evt){
+        $('#x1').empty();
+        $('#x1').load('/WebsiteData/HTML/Templates/maps.html',function(){
+            console.log("loaded  realTimeMap template");
+        });  
+        $("#chartTitle").html('<h6> Real Time Analysis - Map</h6>') ; 
+    }
+
+
+    function loadRealTimeAnalysis(evt){
+     $('#x1').empty();
+     $('#x1').load('/WebsiteData/HTML/Templates/realtime.html',function(){
+     });  
+     $("#chartTitle").html('<h6> Real Time Analysis - Charts</h6>') ; 
+ }
+
+  /*      function loadRealTimeAnalysis2(evt){
+            alert("real time clicked");
+          // $('#x1').empty();
+           $('#x1').load('/WebsiteData/HTML/Templates/realTimeAnalysis2.html',function(){
+            console.log("loaded  realTimeAnalysis template !");
+           });  
+        }
+        
+         function loadRealTimeAnalysis3(evt){
+         //   alert("real time clicked");
+           $('#x1').empty();
+           $('#x1').load('/WebsiteData/HTML/Templates/realTimeAnalysis3.html',function(){
+            console.log("loaded  realTimeAnalysis template !");
+           });  
+        }
+        */
+        function loadStartingEndingTrips(evt){
+            $('#x1').empty(); 
+            $('#x1').load('/WebsiteData/HTML/Templates/startingEndingTrips.html',function(){
+            }); 
+            $("#chartTitle").html('<h6> Staring and Ending Trips</h6>') ; 
+
+        }
+
+        function loadTripsStationsRevenue(evt){
+            $('#x1').empty(); 
+            $('#x1').load('/WebsiteData/HTML/Templates/costTripsAnalysisYearwise.html',function(){
+            }); 
+            $("#chartTitle").html('<h6> Trips, Stations and Revenue</h6>') ;  
+        }
+
+        function loadMonthlyDailyHourly(evt){
+            $('#x1').empty(); 
+            $('#x1').load('/WebsiteData/HTML/Templates/dayHourMonthYear.html',function(){
+            });  
+            $("#chartTitle").html('<h6> Monthly, Daily and Hourly</h6>') ;  
+        }
+
+        function loadTopFiveAnalysis (evt){
+            $('#x1').empty(); 
+            $('#x1').load('/WebsiteData/HTML/Templates/topFive.html',function(){
+            });  
+            $("#chartTitle").html('<h6> Top Five Analysis</h6>') ; 
+        }
+
+        function loadUserDocksStationsTrips(evet){
+            $('#x1').empty(); 
+            $('#x1').load('/WebsiteData/HTML/Templates/userDocksStationsTrips.html',function(){
+            });  
+            $("#chartTitle").html(' <h6> Users, Docks, Stations, Trips</h6>') ; 
+        }
+        
+        function loadWeather(evt){
+            // function(){}  // to remove all the on event.
+            $('#x1').empty();
+            $('#x1').load('/WebsiteData/HTML/Templates/weather.html');
+            $("#chartTitle").html('<h4> Weather Analysis</h4>') ;   
+        }
+        
+    </script>
+</body>
+
+</html>

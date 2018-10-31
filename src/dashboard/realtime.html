@@ -1,0 +1,72 @@
+
+<script>
+ $.getScript('https://code.highcharts.com/highcharts-3d.js',function(){
+   $.getScript('/WebsiteData/JS/highchartsTheme.js',function(){
+    $.getScript('/WebsiteData/JS/realtime.js',function(){
+    });
+  });
+ });
+
+</script>
+
+<!-- <script src="/subscriber/highchartsTheme.js"></script> -->
+<div style="color:green" class="text-center">    
+  <h1 class="text-center">Real time Data Visualization</h1>
+  <div  id="lastRefreshedTime"></div>
+  <h6 class="text-center">(Data will be refreshed after every 60 seconds)</h6>
+
+<!--  <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
+  , <div> -->
+
+  <br>
+  <h4>
+  <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterDataRealtime('San Francisco')" checked > San Francisco
+  <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterDataRealtime('San Jose')" > San Jose
+  <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterDataRealtime('Palo Alto')" > Palo Alto
+  <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterDataRealtime('Redwood City')" > Redwood City
+  <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterDataRealtime('Mountain View')" > Mountain View <br>
+  </h4>
+    <br> 
+    <ul id="RealTimetabs" class="nav nav-tabs">
+  <li id="realtime1-tab" onclick="showRentedBikes()">
+      <a href="#realtime1" data-toggle="tab"> <span>Rented Bikes  </span> </a>
+  </li>
+  <li  id="realtime2-tab" onclick="showDemand()" class=" nav nav-tabs" >
+      <a href="#realtime2" data-toggle="tab"> <span> Demand Prediction </span> </a>
+    </li>
+  <li class="nav nav-tabs"  id="realtime3-tab" onclick="showDocs()" >
+      <a href="#realtime3" data-toggle="tab"> <span> Available Docks  </span> </a>
+  </li>
+  <li  id="realtime4-tab" onclick="showBikes()" class=" nav nav-tabs" >
+      <a href="#realtime4" data-toggle="tab"> <span> Avalaible Bikes </span> </a>
+  </li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<div class="outerBox " style="padding-top: 20px;padding-bottom: 20px;min-height:450px">
+  <div class="col-sm-12 col-md-12 col-lg-12 innerBox"  id="realtime1" >
+    <div class="col-sm-12 col-md-12 col-lg-12" id="rentedBikes" ></div>
+
+  </div>
+    
+  <div  class="col-sm-12 col-md-12 col-lg-12 innerBox" id="realtime2" >
+      <div class="col-sm-12 col-md-12 col-lg-12" id="demandPrediction"></div>
+  </div>
+    
+  <div  class="col-sm-12 col-md-12 col-lg-12 innerBox" id="realtime3" >
+      <div  class="col-sm-12 col-md-12 col-lg-12" id="availableDocks"></div>
+  </div>
+    
+  <div  class="col-sm-12 col-md-12 col-lg-12 innerBox" id="realtime4" >
+     <div class="col-sm-12 col-md-12 col-lg-12" id="availableBikes"></div>
+ </div>
+</div>
+
+
+

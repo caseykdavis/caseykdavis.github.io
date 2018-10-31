@@ -1,0 +1,74 @@
+
+<script>
+
+ $.getScript('/WebsiteData/JS/topFive.js',function(){
+
+  $.getScript('/WebsiteData/JS/highchartsTheme.js',function(){
+  });
+})
+</script>
+
+
+<link href="/WebsiteData/CSS/topFive.css" rel="stylesheet">
+<h2 style="color:green" class="text-center">Most popular Stations, Routes, Days, Months, Hours</h2>
+<div>
+  <h4 class="text-center" style="color:green" >Select Year  <input id="year2015" class="myYear" type="radio" name="year" value="2015" checked> 2015
+    <input id="year2014" type="radio" name="year" class="myYear" value="2014"> 2014<br><br>
+    <input class="center city"type="radio" name="mychart1"  id= "sanfrancisco" value="San Francisco"  checked> San Francisco
+    <input class="center city"type="radio" name="mychart1"  id= "sanjose" value="San Jose"  > San Jose
+    <input class="center city"type="radio" name="mychart1"  id= "paloalto" value="Palo Alto" > Palo Alto
+    <input class="center city"type="radio" name="mychart1"  id= "redwoodcity" value="Redwood City"  > Redwood City
+    <input class="center city"type="radio" name="mychart1"  id= "mountainview" value="Mountain View"  > Mountain View<br><br>
+  </h4>
+</div>
+<!--  <div>
+   			<div class="col-md-6" id="mostStartingStations">
+   			</div>
+   			<div class="col-md-6" id="mostEndingStations">
+   			</div>
+   			<div class="col-md-6" id="mostStartingStations">
+   			</div> 
+   			<div class="col-md-6" id="mostPopularHours">
+   			</div>
+
+   			<div class="col-md-6" id="mostStartingStations">
+   			</div>
+   			<div class="col-md-6" id="mostPopularMonths">
+   			</div> -->
+
+        <ul class="nav nav-tabs" role="tablist">
+          <li id="mostStartingStations-tab" class="active">
+            <a href="#trips-mostStartingStations" data-toggle="tab"><h4>Stations</h4></a>
+          </li>
+          <li  id="mostStartingStations-tab" >
+            <a href="#trips-mostPopularRoutes" data-toggle="tab"><h4>Routes & Hours</h4></a>
+          </li>
+          <li  id="mostStartingStations-tab" >
+            <a href="#trips-mostPopularDays"  data-toggle="tab"><h4>Days and Months</h4></a>
+          </li>
+        </ul>
+        <div style="font-size: larger">
+        <div class="tab-content" style="padding-top: 20px;padding-bottom: 20px;min-height:350px; background-color: white">
+          <div  class="tab-pane fade in active" id="trips-mostStartingStations" >
+           <div class="col-sm-12">
+            <div class="col-sm-6" id="mostStartingStations" style=""></div>
+            <div class="col-sm-6" id="mostEndingStations" style=""></div>
+          </div>
+        </div>
+        <div  class="tab-pane fade" id="trips-mostPopularRoutes" >
+          <div class="col-sm-12">
+            <div class="col-sm-6" id="mostPopularRoutes" style=""></div>
+            <div class="col-sm-6" id="mostPopularHours" style=""></div>
+          </div>
+        </div>
+        <div  class="tab-pane fade" id="trips-mostPopularDays" >
+         <div class="col-sm-12">
+          <div class="col-sm-6" id="mostPopularDays" style=""></div>
+          <div class="col-sm-6" id="mostPopularMonths" style=""></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
