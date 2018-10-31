@@ -1,0 +1,12 @@
+## A path:
+/dashboard/index.html
+  # Headers for that path:
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+/templates/index2.html
+  X-Frame-Options: SAMEORIGIN
+
+  /*
+##   Link: </style.css>; rel=preload; as=style
+##   Link: </main.js>; rel=preload; as=script
+##   Link: </image.jpg>; rel=preload; as=image
