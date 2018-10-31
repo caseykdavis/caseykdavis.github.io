@@ -1,0 +1,70 @@
+<h1 class="text-center">Real time </h1>
+<!--  <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
+, <div> -->
+
+
+<br>
+<div class="realtimeoption">
+ <input class="center" type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('San Francisco')" checked > San Francisco
+  <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('San Jose')" > San Jose
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('Palo Alto')" > Palo Alto
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('Redwood City')" > Redwood City
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('Mountain View')" > Mountain View <br>
+    
+    </div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+       <div class="col-md-12">
+  <!-------1 -->
+            <div id="container4" style="min-width: 100%;  height: 400px; display: inline-block auto"> </div><br><br>
+        </div> <!-- one -->
+    </div>
+
+    <div class="item">
+     <div class="col-md-12">
+        <!-- -------2 -->
+ <div id="container2" style="min-width: 100%;  height: 400px; inline-block ; padding-left:1%"></div><br><br>
+ </div> <!-- two -->
+</div>
+
+
+    <div class="item">
+        <div class="col-lg-12" class="col-md-12" class="col-sm-12">
+          <!--  -------3 -->
+            <div id="container" style="min-width: 100%; height: 400px; display: inline-block auto"> </div><br><br>
+        </div> <!-- 3 -->
+    </div> 
+      
+      
+      <div class="item">
+        <div class="col-lg-12" class="col-md-12" class="col-sm-12"> 
+           <!-- -----4 -->
+            <div id="container3" style="min-width: 100%; height: 400px; display: inline-block auto"></div><br><br>
+        </div> <!-- four -->
+    </div>
+      
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div  id="lastRefreshedTime"></div>
+<h6 class="text-center">(Data will be refreshed after every 60 seconds)</h6>

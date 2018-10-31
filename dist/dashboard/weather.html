@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Weather Data</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- 1. Add these JavaScript inclusions in the head of your page -->
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/2.2.2/proj4.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/maps/modules/exporting.js"></script>
+     <script type="text/javascript" src="http://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+   -->
+   <script>
+        $.getScript('/WebsiteData/JS/weather.js',function(){
+//		$.getScript('/WebsiteData/JS/highchartsTheme.js',function(){
+//		});
+	});
+       
+</script>
+ 
+</head>
+<body>       
+<h1 class="text-center" style="color:green">Weather Effect Analysis</h1>
+
+<!--  <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
+ <div> -->
+
+
+<h4 class="text-center" style="color:green" >
+<br>
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('San Jose')" checked> San Jose
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('San Francisco')" > San Francisco
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('Palo Alto')" > Palo Alto
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('Redwood City')" > Redwood City
+ <input class="center"type="radio" name="mychart" class="mychart" id= "column" value="column" onclick= "filterData('Mountain View')" > Mountain View
+ </h4>
+
+<div class="container">
+ <div class="col-md-12">
+ <!-- <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br> -->
+ </div>
+
+        <div class="col-md-12">
+            <div id="container" style="min-width: 200px; height: 400px; display: inline-block auto"> </div><br><br>
+        </div>
+        <!--<div class="col-md-12">
+            <div id="container3" style="min-width: 200px; height: 400px; margin: 0 ;display: inline-block auto"></div><br><br>
+        </div> 
+          -->
+</div>
+
+</body>
+</html>
